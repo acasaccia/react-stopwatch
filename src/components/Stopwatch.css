@@ -1,0 +1,40 @@
+.stopwatch-display {
+    @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+    font-family: 'Source Code Pro', monospace;
+    font-size: 200%;
+    margin: 3rem 0 2rem 0;
+}
+
+.stopwatch-button {
+    background-color: lightgrey;
+    padding: 0.5rem 1rem;
+    margin: 1rem;
+    width: 5rem;
+    border: 0;
+}
+
+.stopwatch-button:hover,
+.stopwatch-button:active {
+    background-color: #bbbbbb;
+}
+
+.stopwatch-button__start {
+    background-color: green;
+    color: white;
+}
+
+
+.stopwatch-button__start:hover,
+.stopwatch-button__start:active {
+    background-color: #55ff33;
+}
+
+.stopwatch-button__stop {
+    background-color: red;
+    color: white;
+}
+
+.stopwatch-button__stop:hover,
+.stopwatch-button__stop:active {
+    background-color: #ff3355;
+}
