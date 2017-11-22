@@ -2,8 +2,9 @@ import * as React from 'react';
 import './Stopwatch.css';
 
 export interface Props {
-    start?: Date;
-    accumulator: number;
+    start?: Date; // If the timer is currently running, this represents the last time it was started.
+                  // undefined otherwise
+    accumulator: number; // The value stored from previous start / stops in milliseconds
     onToggleStopwatch: () => void;
     onResetStopwatch: () => void;
 }
@@ -39,6 +40,11 @@ class Stopwatch extends React.Component<Props, State> {
         window.clearInterval(this.intervalId);
     }
 
+    /**
+     * Returns a string for the stopwatch display in the format [mm:ss,SS], formatting the accumulator time interval in
+     * milliseconds and adding the elapsed time if the timer is currently running.
+     * @returns {String}
+     */
     getDisplayTime(): String {
         let time = this.props.accumulator;
         if (this.props.start) {
@@ -77,6 +83,15 @@ class Stopwatch extends React.Component<Props, State> {
         );
     }
 
+    /**
+     * Pads the given number, aligning it to the right of paddingValue string.
+     * For example: leftPad('12345', 66) === '12366'
+     * Note that it will truncate value if it doesn't fit into the paddingValue.
+     * string
+     * @param {String} paddingValue
+     * @param {Number} value
+     * @returns {String}
+     */
     private leftPad(paddingValue: String, value: Number): String {
         return String(paddingValue + value.toString()).slice(-paddingValue.length);
     }
